@@ -14,7 +14,7 @@ import { Avatar,IconButton,Card, CardContent,CardMedia,Button } from "@mui/mater
 import TablePagination from '@mui/material/TablePagination';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import FavoriteDialog from './FavoriteDialog';
 
 
 const RestaurantTable = () => {
@@ -23,6 +23,7 @@ const RestaurantTable = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const[userFavoriteRestaurants,setUserFavoriteRestaurants] = useState([])
+  const favoriteList = userFavoriteRestaurants
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -57,7 +58,10 @@ const RestaurantTable = () => {
 
   return (
       <Card>
-          <CardMedia><Button variant="contained" color='success' size='large' style={{marginLeft: 950, width:300}} onClick={fetchRestaurant}>Suggest Me Restaurant</Button></CardMedia>
+          <CardMedia>
+              <Button variant="contained" color='success' size='large' style={{marginLeft: 950, width:300}} onClick={fetchRestaurant}>Suggest Me Restaurant</Button>
+              <FavoriteDialog favoriteList={favoriteList}/>
+        </CardMedia>
           <CardContent>
           <TableContainer component={Paper} >
         <Table aria-label='simple table' >
