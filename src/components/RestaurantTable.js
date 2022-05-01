@@ -36,7 +36,7 @@ const RestaurantTable = () => {
  
   const handleAddClick = (row) => {
       userFavoriteRestaurants.push(row)
-      console.log(userFavoriteRestaurants)
+      
   }
   const handleDeleteClick = (row) => {
     if(window.confirm('Are you sure to delete this restaurant suggestion?')){
@@ -58,12 +58,12 @@ const RestaurantTable = () => {
 
   return (
       <Card>
-          <CardMedia>
-              <Button variant="contained" color='success' size='large' style={{marginLeft: 950, width:300}} onClick={fetchRestaurant}>Suggest Me Restaurant</Button>
-              <FavoriteDialog favoriteList={favoriteList}/>
-        </CardMedia>
+          <CardMedia>      
+              <FavoriteDialog  favoriteList={favoriteList}/>
+              <Button className='suggestButton' variant="contained"  size='small' style={{width:235,color: '#283747' ,backgroundColor:'#F1948A',fontSize:14}} onClick={fetchRestaurant}>Suggest Me Restaurant</Button> 
+          </CardMedia>
           <CardContent>
-          <TableContainer component={Paper} >
+          <TableContainer component={Paper}  style={{marginTop:20}}>
         <Table aria-label='simple table' >
             <TableHead>
                 <TableRow>                   
