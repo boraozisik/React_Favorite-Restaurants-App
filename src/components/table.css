@@ -21,4 +21,10 @@ table {
     color: #f2f2f2;
   }
 
- 
+  .suggestButton{
+    float: right;
+    
+  }
+  .favoriteDialog{
+    float: right;
+  }
