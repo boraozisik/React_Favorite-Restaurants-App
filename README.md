@@ -1,3 +1,10 @@
+# Purpose of the Project #
+*This application makes restaurant suggestions for the user and user can add these restaurants to his/her favorite restaurant list.*
+# I used MaterialUI in this project so you need to install that. #
+*For install MaterialUI => npm install @mui/material @emotion/react @emotion/styled or yarn add @mui/material @emotion/react @emotion/styled ,*
+*For install MaterialUI Icons => npm install @mui/icons-material or yarn add @mui/icons-material .*
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
