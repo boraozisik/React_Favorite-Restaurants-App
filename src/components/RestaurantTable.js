@@ -12,9 +12,9 @@ import restaurant_data from './restaurant_data.json'
 import './table.css'
 import { Avatar,IconButton,Card, CardContent,CardMedia,Button } from "@mui/material"
 import TablePagination from '@mui/material/TablePagination';
-import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FavoriteDialog from './FavoriteDialog';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 
 const RestaurantTable = () => {
@@ -23,6 +23,7 @@ const RestaurantTable = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const[userFavoriteRestaurants,setUserFavoriteRestaurants] = useState([])
+  
   const favoriteList = userFavoriteRestaurants
 
   const handleChangePage = (event, newPage) => {
@@ -35,7 +36,17 @@ const RestaurantTable = () => {
   };
  
   const handleAddClick = (row) => {
-      userFavoriteRestaurants.push(row)
+      
+      if(userFavoriteRestaurants.includes(row)){
+          alert("This restaurant has already been added to your favorites!!")
+      }  
+      else{
+        if(window.confirm('This restaurant will be added to your favorites?')){
+            userFavoriteRestaurants.push(row)
+        }
+
+        
+      }
       
   }
   const handleDeleteClick = (row) => {
@@ -59,7 +70,7 @@ const RestaurantTable = () => {
   return (
       <Card>
           <CardMedia>      
-              <FavoriteDialog  favoriteList={favoriteList}/>
+              <FavoriteDialog  favoriteList={favoriteList} />
               <Button className='suggestButton' variant="contained"  size='small' style={{width:235,color: '#283747' ,backgroundColor:'#F1948A',fontSize:14}} onClick={fetchRestaurant}>Suggest Me Restaurant</Button> 
           </CardMedia>
           <CardContent>
@@ -83,11 +94,12 @@ const RestaurantTable = () => {
                                 <TableCell>{row.type}</TableCell>
                                 <TableCell>{row.phone_number}</TableCell> 
                                 <TableCell> 
+                                    
                                     <IconButton aria-label='addToFavorites' color='primary' size='small' onClick = {() => handleAddClick(row)}>
-                                        <AddIcon/>
+                                        <StarBorderIcon/>
                                         
                                     </IconButton>
-                                    <IconButton aria-label='deleteSuggestion' color='error' size='small' onClick = {() => handleDeleteClick(row)}>
+                                    <IconButton aria-label='deleteSuggestion'  size='small' onClick = {() => handleDeleteClick(row)} style={{color: '#34495E'}}>
                                         <DeleteIcon/>
                                         
                                     </IconButton>
@@ -119,3 +131,4 @@ const RestaurantTable = () => {
 }
 
 export default RestaurantTable
+   
