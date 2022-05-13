@@ -63,7 +63,7 @@ const FavoriteRestaurantsTable = ({favoriteList}) => {
                             <TableCell>{row.phone_number}</TableCell> 
                             <TableCell> 
                                    
-                                    <IconButton aria-label='deleteSuggestion' color='error' size='small' onClick = {() => handleDeleteClick(row)}>
+                                    <IconButton aria-label='deleteSuggestion' style={{color: '#E74C3C'}} size='small' onClick = {() => handleDeleteClick(row)} >
                                         <DeleteIcon/>
                                         
                                     </IconButton>
